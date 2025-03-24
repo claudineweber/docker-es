@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge

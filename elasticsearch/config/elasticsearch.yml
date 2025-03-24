@@ -1,0 +1,9 @@
+cluster.name: "es-cluster"
+network.host: 0.0.0.0
+http.port: 9200
+
+# Enable security (optional, for development you can disable it)
+xpack.security.enabled: false
+
+# Memory settings
+bootstrap.memory_lock: true
