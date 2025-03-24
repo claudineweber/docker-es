@@ -3,8 +3,8 @@ version: '3.8'
 services:
   elasticsearch:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./elasticsearch # Point to the elasticsearch folder
+      dockerfile: Dockerfile # Dockerfile is inside the elasticsearch folder
     container_name: elasticsearch
     environment:
       - discovery.type=single-node

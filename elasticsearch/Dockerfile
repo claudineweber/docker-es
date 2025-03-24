@@ -1,10 +1,15 @@
-FROM docker.elastic.co/elastic/elastic:8.13.4
+# Use the official Elasticsearch image as base
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.13.4
 
 # Copy custom configuration
-COPY elasticsearch/config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
-# Set ownership to elasticsearch user
+# Temporarily switch to root to adjust permissions
+USER root
 RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/config/elasticsearch.yml
+
+# Switch back to elasticsearch user
+USER elasticsearch
 
 # Set environment variables
 ENV discovery.type=single-node
