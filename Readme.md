@@ -87,7 +87,7 @@ curl -X GET "http://localhost:9200/books/_search" -H 'Content-Type: application/
 }'
 ```
 
-## MIT Licence
+## Licence
 
 MIT License
 
